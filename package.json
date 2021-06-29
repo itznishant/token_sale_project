@@ -1,0 +1,17 @@
+{
+	"name": "SASI-Token-Sale",
+	"version": "1.0.0" ,
+	"description": "SASI Token Sale (ERC20) ICO",
+	"main": "truffle.js",
+	"directories": {
+		"test": "test" 
+	},
+	"scripts": {
+		"dev": "lite-server"
+	},
+	"author": "Nishant Vemulakonda",
+	"license": "ISC",
+	"devDependencies": {
+		"lite-server": "^2.3.0"
+	}
+}
