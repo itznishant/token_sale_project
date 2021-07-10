@@ -18,11 +18,12 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const infuraKey = "6b1ef2c97f914d1eb35e0fbed1219984";
+const mnemonic = "pact super anger west return vacuum post coconut wolf script where tuition"
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+const URL = 'https://rinkeby.infura.io/v3/' + infuraKey
 
 module.exports = {
   /**
@@ -42,11 +43,28 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    development: {
-     host: "127.0.0.1",     // Localhost (default: none)
-     port: 7545,            // Standard Ethereum port (default: none)
-     network_id: "*",       // Any network (default: none)
-    },
+    // development: {
+    //  host: "127.0.0.1",     // Localhost (default: none)
+    //  port: 7545,            // Standard Ethereum port (default: none)
+    //  network_id: 5777,       // Any network (default: none)
+    // },
+    rinkeby: {
+      networkCheckTimeout: 10000,
+      provider:function() {return new HDWalletProvider(mnemonic, URL);
+      },
+      network_id: 4,
+      gas: 4700000,
+      timeoutBlocks: 200,
+      confirmations: 10
+    }
+  }
+};
+    //   host: "localhost",
+    //   port: 8545,
+    //   network_id: 4,
+    //   gas: 4700000
+    // }
+
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -72,12 +90,11 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
-  },
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
-  },
+  }
 
   // Configure your compilers
   compilers: {
@@ -92,7 +109,7 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     }
-  },
+  }
 
   // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true
   //
@@ -102,5 +119,4 @@ module.exports = {
 
   db: {
     enabled: false
-  }
-};
+  };
